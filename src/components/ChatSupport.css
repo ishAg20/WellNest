@@ -1,0 +1,100 @@
+.chat-support {
+  padding: 2em;
+  text-align: center;
+}
+
+.chat-support h2 {
+  font-size: 2em;
+  margin-bottom: 1em;
+  color: #5d4037;
+}
+
+.doctor-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  justify-content: center;
+}
+
+.doctor-item {
+  background-color: #fff8e1;
+  padding: 1em;
+  flex: 1 1 calc(25% - 1em);
+  margin: 0.5em;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.doctor-item:hover {
+  transform: translateY(-5px);
+}
+
+.doctor-item h3 {
+  font-size: 1.2em;
+  color: #5d4037;
+}
+
+.doctor-item p {
+  font-size: 1em;
+  color: #5d4037;
+}
+
+.doctor-item button {
+  background-color: #ffd54f;
+  color: #5d4037;
+  border: none;
+  padding: 0.5em 1em;
+  font-size: 1em;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.doctor-item button:hover {
+  background-color: #ffc107;
+}
+
+.appointment-form {
+  margin-top: 2em;
+  background-color: #fff;
+  padding: 2em;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.appointment-form h3 {
+  margin-bottom: 1em;
+  color: #5d4037;
+}
+
+.appointment-form label {
+  display: block;
+  margin-bottom: 0.5em;
+  color: #5d4037;
+}
+
+.appointment-form input,
+.appointment-form select {
+  width: calc(100% - 1em);
+  padding: 0.5em;
+  margin-bottom: 1em;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.appointment-form button {
+  background-color: #5d4037;
+  color: #fff;
+  border: none;
+  padding: 0.5em 1em;
+  font-size: 1em;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.appointment-form button:hover {
+  background-color: #3e2723;
+}

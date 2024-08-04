@@ -1,0 +1,26 @@
+/* HomePage.css */
+.home-page {
+  padding: 4em 2em;
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.home-page h1 {
+  font-size: 5em;
+  margin-bottom: 0.5em;
+  color: #452015;
+}
+
+.home-page p {
+  color: #6e483d;
+  font-size: 2em;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
