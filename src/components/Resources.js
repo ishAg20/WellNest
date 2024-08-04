@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./Resources.css";
 
-const YOUTUBE_API_KEY = `${your - api - key}`;
-const NEWS_API_KEY = `${your - api - key}`;
+const YOUTUBE_API_KEY = process.env.REACT_APP_YOUTUBE_API_KEY;
+const NEWS_API_KEY = process.env.REACT_APP_NEWS_API_KEY;
+
 const TOPICS = [
   "meditation",
   "mental wellbeing",
@@ -23,7 +24,8 @@ const Resources = () => {
     try {
       const allVideos = [];
       const allArticles = [];
-
+      console.log("YouTube API Key:", process.env.REACT_APP_YOUTUBE_API_KEY);
+      console.log("News API Key:", process.env.REACT_APP_NEWS_API_KEY);
       // Fetch videos and articles for each topic
       const videoPromises = TOPICS.map((topic) =>
         fetch(
@@ -41,27 +43,36 @@ const Resources = () => {
       const articleResponses = await Promise.all(articlePromises);
 
       console.log("Video responses:", videoResponses); // Debug log
+      console.log("Article responses:", articleResponses); // Debug log
 
-      videoResponses.forEach((videoData, index) => {
-        if (videoData.items) {
+      videoResponses.forEach((videoData) => {
+        if (videoData.items && Array.isArray(videoData.items)) {
           allVideos.push(...videoData.items);
         } else {
           console.warn(
-            `No items in video response for topic: ${TOPICS[index]}`
+            "No items found in video response or invalid format:",
+            videoData
           );
         }
       });
 
       articleResponses.forEach((articleData, index) => {
-        const topic = TOPICS[index];
-        const topicArticles = articleData.articles.filter(
-          (article) =>
-            article.urlToImage &&
-            (article.title.toLowerCase().includes(topic) ||
-              article.description.toLowerCase().includes(topic)) &&
-            !isAdContent(article)
-        );
-        allArticles.push(...topicArticles);
+        if (articleData && Array.isArray(articleData.articles)) {
+          const topic = TOPICS[index];
+          const topicArticles = articleData.articles.filter(
+            (article) =>
+              article.urlToImage &&
+              (article.title.toLowerCase().includes(topic) ||
+                article.description.toLowerCase().includes(topic)) &&
+              !isAdContent(article)
+          );
+          allArticles.push(...topicArticles);
+        } else {
+          console.warn(
+            `No articles found or invalid format for topic: ${TOPICS[index]}`,
+            articleData
+          );
+        }
       });
 
       const uniqueArticles = Array.from(
@@ -78,6 +89,7 @@ const Resources = () => {
       setArticles(randomArticles);
 
       console.log("Videos state:", randomVideos); // Debug log
+      console.log("Articles state:", randomArticles); // Debug log
     } catch (error) {
       console.error("Error fetching resources:", error);
       setError(error);
@@ -135,7 +147,7 @@ const Resources = () => {
       <button className="refresh" onClick={fetchResources}>
         Refresh Resources
       </button>
-      <h2>YouTube Videos </h2>
+      <h2>YouTube Videos</h2>
       <div className="resource-grid">
         {videos.length > 0 ? (
           videos.map((video) => (
@@ -157,23 +169,27 @@ const Resources = () => {
       </div>
       <h2>News Articles</h2>
       <div className="resource-grid">
-        {articles.map((article, index) => (
-          <div
-            key={index}
-            className="resource-item"
-            onClick={() => window.open(article.url, "_blank")}
-          >
-            <img
-              src={article.urlToImage}
-              alt={article.title}
-              className="resource-image"
-            />
-            <div className="resource-content">
-              <h3 className="resource-title">{article.title}</h3>
-              <p className="resource-description">{article.description}</p>
+        {articles.length > 0 ? (
+          articles.map((article, index) => (
+            <div
+              key={index}
+              className="resource-item"
+              onClick={() => window.open(article.url, "_blank")}
+            >
+              <img
+                src={article.urlToImage}
+                alt={article.title}
+                className="resource-image"
+              />
+              <div className="resource-content">
+                <h3 className="resource-title">{article.title}</h3>
+                <p className="resource-description">{article.description}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        ) : (
+          <p>No articles available</p>
+        )}
       </div>
     </div>
   );
