@@ -13,13 +13,14 @@
 
 .mood-options {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 1em;
   margin-bottom: 1em;
 }
 
 .mood-button {
-  font-size: 3em;
+  font-size: 2.5em;
   background: none;
   border: none;
   cursor: pointer;
@@ -41,6 +42,7 @@
 
 .mood-comment {
   width: 80%;
+  max-width: 500px;
   height: 120px;
   padding: 1em;
   font-size: 1.2em;
@@ -49,78 +51,38 @@
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.mood-comment:focus {
-  border-color: #ffd54f;
-  box-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
-  outline: none;
-}
-
-.log-mood-button {
-  font-size: 1.2em;
-  background-color: #5d4037;
-  color: #fff;
-  border: none;
-  padding: 0.8em 1.5em;
-  cursor: pointer;
-  border-radius: 8px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.log-mood-button:hover {
-  background-color: #3e2723;
-  transform: scale(1.05);
-}
-
 .mood-log {
   display: flex;
   flex-wrap: wrap;
   gap: 1em;
-  margin-top: 1em;
   justify-content: center;
-  margin-left: 2em;
-  margin-right: 2em;
-  flex: 1 1 calc(33.3333% - 2em);
+  margin-left: 1em;
+  margin-right: 1em;
 }
 
 .mood-log-entry {
   background-color: #fff;
   padding: 1em;
-  width: 20rem;
-  height: auto;
+  width: 100%;
+  max-width: 300px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin: 0.5em;
   animation: slideIn 0.5s ease-in-out;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  white-space: pre-wrap;
 }
 
-.mood-log-entry:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-.mood-log-entry p {
-  margin: 0;
-  color: #5d4037;
-  text-align: justify;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
+@media (max-width: 768px) {
+  .mood-log-entry {
+    max-width: 100%;
   }
 }
 
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
+@media (max-width: 480px) {
+  .mood-tracker h2 {
+    font-size: 2em;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .mood-comment {
+    width: 95%;
   }
 }

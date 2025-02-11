@@ -1,13 +1,12 @@
-.resources {
+.resources-container {
   padding: 2em;
-  border-radius: 10px;
+  text-align: center;
 }
 
-.resources h2 {
-  font-size: 2em;
-  color: #5d4037;
-  text-align: center;
+.resources-container h2 {
+  font-size: 2.5em;
   margin-bottom: 1em;
+  color: #5d4037;
 }
 
 .resource-grid {
@@ -16,7 +15,56 @@
   gap: 1em;
   justify-content: center;
 }
+
+.resource-item {
+  background-color: #fff8e1;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1em;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: calc(25% - 1em);
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}
+
+.resource-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.resource-item img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.resource-item h3 {
+  font-size: 1.2em;
+  color: #5d4037;
+}
+
+.resource-item p {
+  font-size: 1em;
+  color: #3e2723;
+}
+
 .refresh {
+  margin-top: 1em;
   font-size: 1.2em;
   background-color: #5d4037;
   color: #fff;
@@ -31,44 +79,27 @@
   background-color: #3e2723;
   transform: scale(1.05);
 }
-.resource-item {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  overflow: hidden;
-  width: calc(25% - 1em); /* Adjusted for 4 columns */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+@media (max-width: 600px) {
+  .resource-item {
+    width: 100%;
+  }
 }
 
-.resource-item:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+@media (min-width: 601px) and (max-width: 900px) {
+  .resource-item {
+    width: calc(50% - 1em);
+  }
 }
 
-.resource-image {
-  width: 100%;
-  height: 200px; /* Increased image height */
-  object-fit: cover;
+@media (min-width: 901px) and (max-width: 1200px) {
+  .resource-item {
+    width: calc(33.33% - 1em);
+  }
 }
 
-.resource-content {
-  padding: 1em;
-}
-
-.resource-title {
-  font-size: 1.2em;
-  color: #5d4037;
-  margin: 0;
-}
-
-.resource-description {
-  color: #3e2723;
-  margin-top: 0.5em;
-}
-
-.loading {
-  text-align: center;
-  font-size: 1.5em;
-  color: #5d4037;
+@media (min-width: 1201px) {
+  .resource-item {
+    width: calc(25% - 1em);
+  }
 }

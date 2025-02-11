@@ -110,6 +110,7 @@ const Resources = () => {
       "laptop",
       "shop",
       "deal",
+      "deals",
       "mobile",
       "price",
       "amazon",
@@ -153,14 +154,14 @@ const Resources = () => {
           videos.map((video) => (
             <div key={video.id.videoId} className="resource-item">
               <h3>{video.snippet.title}</h3>
-              <iframe
-                width="560"
-                height="315"
-                src={`https://www.youtube.com/embed/${video.id.videoId}`}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                title={video.snippet.title}
-              ></iframe>
+              <div className="video-wrapper">
+                <iframe
+                  src={`https://www.youtube.com/embed/${video.id.videoId}`}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  title={video.snippet.title}
+                ></iframe>
+              </div>
             </div>
           ))
         ) : (
