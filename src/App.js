@@ -8,7 +8,7 @@ import ResourcesPage from "./pages/ResourcesPage";
 import ChatSupportPage from "./pages/ChatSupportPage";
 import "./App.css";
 
-function App() {
+const App = () => {
   return (
     <Router>
       <div className="app">
@@ -22,6 +22,6 @@ function App() {
       </div>
     </Router>
   );
-}
+};
 
 export default App;

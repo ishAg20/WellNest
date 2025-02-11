@@ -1,0 +1,21 @@
+.dashboard-container {
+  color: #5b4034;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: 20px auto;
+}
+body {
+  background: url("./bgimg.png");
+  background-size: cover;
+  height: 90vh;
+}
+.dashboard-container h1 {
+  font-size: 5rem;
+  margin-bottom: 15px;
+}
+
+.dashboard-container p {
+  font-size: 3rem;
+}
